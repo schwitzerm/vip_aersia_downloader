@@ -2,13 +2,13 @@ package ca.schwitzer.vip_aersia_downloader
 
 import java.nio.file.{Path, Paths}
 
-import akka.{Done, NotUsed}
 import akka.actor.ActorSystem
 import akka.http.scaladsl._
 import akka.http.scaladsl.model.{HttpRequest, StatusCodes}
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl._
 import akka.util.ByteString
+import akka.{Done, NotUsed}
 import com.google.inject.Inject
 import com.typesafe.config.Config
 
