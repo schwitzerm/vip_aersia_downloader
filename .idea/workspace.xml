@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d61b8c2d-d5d1-43f8-9555-2bd0a1d23955" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.conf" afterPath="$PROJECT_DIR$/src/main/resources/application.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/VIPDownloader.scala" afterPath="$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/VIPDownloader.scala" />
     </list>
     <ignored path="vip-aersia-downloader.iws" />
@@ -41,11 +40,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="VIPDownloader.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/VIPDownloader.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="VIPDownloader.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/VIPDownloader.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
                 <element signature="e#44#69#0" expanded="true" />
               </folding>
@@ -82,6 +91,7 @@
         <option value="$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/Runner.scala" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/resources/application.conf" />
+        <option value="$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/VIPDownloader.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/VIPDownloader.scala" />
       </list>
     </option>
@@ -278,7 +288,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../playground/src/main/resources/application.conf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/VIPDownloader.scala" />
   </component>
   <component name="RunManager" selected="Application.Runner">
     <configuration default="false" name="Runner" type="Application" factoryName="Application" temporary="true">
@@ -816,12 +826,12 @@
       <option name="presentableId" value="Default" />
       <updated>1478219040271</updated>
       <workItem from="1478219041667" duration="3005000" />
-      <workItem from="1478223114328" duration="958000" />
+      <workItem from="1478223114328" duration="1979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3963000" />
+    <option name="totallyTimeSpent" value="4984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1282" y="26" width="1255" height="1052" extended-state="0" />
@@ -915,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/VIPDownloader.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/Runner.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -989,10 +991,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../playground/src/main/scala/ca/schwitzerm/playground/VIPDownloader.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/ca/schwitzer/vip_aersia_downloader/VIPDownloader.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="e#44#69#0" expanded="true" />
           </folding>
