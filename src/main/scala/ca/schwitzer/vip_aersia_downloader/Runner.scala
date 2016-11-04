@@ -13,15 +13,12 @@ object Runner extends App {
   def defaultDownload(): Unit = {
     val savePath = Paths.get(new File("./downloaded").getCanonicalPath)
 
-    if(Files.isDirectory(savePath)) {
-      vipDownloader.downloadAll(savePath) onComplete {
-        case Success(_) => println("Done downloading!"); System.exit(0)
-        case Failure(e) => throw e
-      }
+    if(!Files.isDirectory(savePath)) {
+      if(!new File(savePath.toString).mkdirs()) { throw new Exception(s"Could not create default dir: $savePath") }
     }
-    else {
-      //TODO: replace with override flag that will create directory for us if it does not exist, do not create by default
-      throw new Exception("Default download path does not exist. Please create path 'downloaded' in working directory!")
+    vipDownloader.downloadAll(savePath) onComplete {
+      case Success(_) => println("Done downloading!"); System.exit(0)
+      case Failure(e) => throw e
     }
   }
 

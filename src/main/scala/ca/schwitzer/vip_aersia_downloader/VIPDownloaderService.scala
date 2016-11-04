@@ -11,6 +11,7 @@ import akka.util.ByteString
 import akka.{Done, NotUsed}
 import com.google.inject.Inject
 import com.typesafe.config.Config
+import org.joda.time.DateTime
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -54,7 +55,8 @@ class VIPDownloaderServiceImpl @Inject()(implicit config: Config,
   override def downloadAll(savePath: Path): Future[Done] = {
     //limited at 5000, tracks shouldnt exceed this many unless the author of the site adds a TON more..
     xmlSource.via(filenameFlow).limit(5000).runWith(Sink.seq).flatMap { filenames =>
-      progressBar.setCount(filenames.length)
+      progressBar.setStartTime(DateTime.now)
+      progressBar.setTotal(filenames.length)
       //group into a stream of streams 80 tracks long, as http flows will stop processing after ~100 elems
       val fileStreams = Source(filenames)
         .grouped(80)

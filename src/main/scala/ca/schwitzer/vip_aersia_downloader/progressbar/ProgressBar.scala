@@ -5,6 +5,7 @@ import jline.TerminalFactory
 
 case class ProgressBar(progress: Int, total: Int, startTime: Option[DateTime] = None) {
   def clearProgress: ProgressBar = this.copy(progress = 0)
+
   def draw(): Unit = {
     val width: Int = TerminalFactory.get.getWidth
 
@@ -34,7 +35,7 @@ case class ProgressBar(progress: Int, total: Int, startTime: Option[DateTime] = 
       }
 
       timeLeft match {
-        case Some(tl) => tl.toString + " " + pct
+        case Some(tl) => tl.toString + "s " + pct
         case None => pct
       }
     }
