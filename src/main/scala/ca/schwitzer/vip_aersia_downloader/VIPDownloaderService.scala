@@ -23,7 +23,7 @@ trait VIPDownloaderService {
 class VIPDownloaderServiceImpl @Inject()(implicit config: Config,
                                          system: ActorSystem,
                                          materializer: ActorMaterializer,
-                                         progressBar: ProgressBar) extends VIPDownloaderService {
+                                         progressBar: ProgressBarService) extends VIPDownloaderService {
   val httpFlow = Http().outgoingConnection(host = config.getString("vip.http-addr"))
 
   def xmlSource: Source[Elem, NotUsed] = Source.single(HttpRequest(uri = s"/${config.getString("vip.xml-file")}"))
