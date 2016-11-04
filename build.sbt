@@ -1,6 +1,6 @@
 name := "vip_aersia_downloader"
 
-version := "0.0.2-SNAPSHOP"
+version := "0.0.3-SNAPSHOT"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(

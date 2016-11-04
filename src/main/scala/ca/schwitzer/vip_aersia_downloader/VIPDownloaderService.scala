@@ -55,8 +55,11 @@ class VIPDownloaderServiceImpl @Inject()(implicit config: Config,
   override def downloadAll(savePath: Path): Future[Done] = {
     //limited at 5000, tracks shouldnt exceed this many unless the author of the site adds a TON more..
     xmlSource.via(filenameFlow).limit(5000).runWith(Sink.seq).flatMap { filenames =>
+      println("Downloading... this could take a while.")
+
       progressBar.setStartTime(DateTime.now)
       progressBar.setTotal(filenames.length)
+
       //group into a stream of streams 80 tracks long, as http flows will stop processing after ~100 elems
       val fileStreams = Source(filenames)
         .grouped(80)
