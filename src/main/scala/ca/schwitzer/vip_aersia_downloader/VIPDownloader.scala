@@ -22,7 +22,8 @@ trait VIPDownloader {
 
 class VIPDownloaderImpl @Inject()(implicit config: Config,
                                   system: ActorSystem,
-                                  materializer: ActorMaterializer) extends VIPDownloader {
+                                  materializer: ActorMaterializer,
+                                  progressBar: ProgressBar) extends VIPDownloader {
   val httpFlow = Http().outgoingConnection(host = config.getString("vip.http-addr"))
 
   def xmlSource: Source[Elem, NotUsed] = Source.single(HttpRequest(uri = s"/${config.getString("vip.xml-file")}"))
@@ -46,12 +47,13 @@ class VIPDownloaderImpl @Inject()(implicit config: Config,
   def writeSink(savePath: Path) = Sink.foreach[(String, ByteString)] {
     case (filename, data) =>
       Source.single(data).runWith(FileIO.toPath(Paths.get(savePath + "/" + filename)))
-      println(s"Done downloading $filename.")
+      progressBar.increment()
   }
 
   override def downloadAll(savePath: Path): Future[Done] = {
     //limited at 5000, tracks shouldnt exceed this many unless the author of the site adds a TON more..
     xmlSource.via(filenameFlow).limit(5000).runWith(Sink.seq).flatMap { filenames =>
+      progressBar.setCount(filenames.length)
       //group into a stream of streams 80 tracks long, as http flows will stop processing after ~100 elems
       val fileStreams = Source(filenames)
         .grouped(80)
