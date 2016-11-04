@@ -48,6 +48,7 @@ class VIPDownloaderServiceImpl @Inject()(implicit config: Config,
     case (filename, data) =>
       Source.single(data).runWith(FileIO.toPath(Paths.get(savePath + "/" + filename)))
       progressBar.increment()
+      progressBar.draw()
   }
 
   override def downloadAll(savePath: Path): Future[Done] = {

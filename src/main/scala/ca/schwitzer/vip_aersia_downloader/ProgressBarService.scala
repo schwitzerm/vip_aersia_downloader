@@ -1,23 +1,25 @@
 package ca.schwitzer.vip_aersia_downloader
 
+import ca.schwitzer.vip_aersia_downloader.progressbar.ProgressBar
+
 trait ProgressBarService {
   def clearCount(): Unit
   def clearProgress(): Unit
+  def draw(): Unit
   def increment(value: Int = 1): Unit
   def setCount(value: Int): Unit
-  def setProgress(value: Int): Unit
 }
 
 class ProgressBarServiceImpl extends ProgressBarService {
-  var progressBar = new pb.ProgressBar(0)
+  var progressBar = new ProgressBar(0, 0)
 
-  def clearCount(): Unit = progressBar = new pb.ProgressBar(0)
+  def clearCount(): Unit = progressBar = new ProgressBar(0, 0)
 
-  def clearProgress(): Unit = progressBar.current = 0
+  def clearProgress(): Unit = progressBar = progressBar.clearProgress
 
-  def increment(value: Int = 1): Unit = progressBar += 1
+  def draw(): Unit = progressBar.draw()
 
-  def setCount(value: Int): Unit = progressBar = new pb.ProgressBar(value)
+  def increment(value: Int = 1): Unit = progressBar = progressBar.increment(value)
 
-  def setProgress(value: Int): Unit = progressBar.current = value
+  def setCount(value: Int): Unit = progressBar = new ProgressBar(0, value)
 }
