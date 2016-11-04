@@ -36,10 +36,22 @@ class VIPDownloaderImpl @Inject()(implicit config: Config,
     (xml \ "trackList" \ "track" \ "location").drop(4).map(_.text.split("/").last)
   }
 
+  def downloadTracksFlow = Flow[String].map(filename => HttpRequest(uri = "/mu/" + filename))
+    .via(httpFlow)
+    .flatMapConcat(_.entity.dataBytes.reduce(_ concat _))
+
   override def downloadAll(savePath: Path): Unit = {
     //limited at 5000, tracks shouldnt exceed this many unless the author of the site adds a TON more..
     xmlSource.via(filenameFlow).limit(5000).runWith(Sink.seq).map { filenames =>
+      //group into a stream of streams 80 tracks long, as http flows will stop processing after ~100 elems
+      val fileStreams = Source(filenames)
+        .grouped(80)
+        .map(xs => Source(xs))
 
+      //map over each stream in the main stream. each stream will run in parallel
+      fileStreams.map { stream =>
+        stream.zip(stream.via(downloadTracksFlow))
+      }.runWith(Sink.ignore)
     }
   }
 }
