@@ -14,8 +14,14 @@ object Runner extends App {
 
   //TODO: write small dir detector/creator
 
-  vipDownloader.downloadAll(Paths.get(new File("./downloaded").getCanonicalPath)) onComplete {
-    case Success(_) => println("Done downloading!")
-    case Failure(e) => throw e
+  args.length match {
+    case 0 => vipDownloader.downloadAll(Paths.get(new File("./downloaded").getCanonicalPath)) onComplete {
+      case Success(_) => println("Done downloading!"); System.exit(0)
+      case Failure(e) => throw e
+    }
+    case _ => vipDownloader.downloadAll(Paths.get(new File(args(0)).getCanonicalPath)) onComplete {
+      case Success(_) => println("Done downloading!"); System.exit(0)
+      case Failure(e) => throw e
+    }
   }
 }

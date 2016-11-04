@@ -57,8 +57,9 @@ class VIPDownloaderImpl @Inject()(implicit config: Config,
         .grouped(80)
         .map(xs => Source(xs))
 
-      //map over each stream in the main stream. each stream will run in parallel
-      fileStreams.map { stream =>
+      //map over each stream in the main stream, 5 at a time. this way we won't exceed max-connection limiting, or
+      //bog down the downloads on slower connections
+      fileStreams.mapAsync(5) { stream =>
         stream.zip(stream.via(downloadTracksFlow)).runWith(writeSink(savePath))
       }.runWith(Sink.ignore)
     }
