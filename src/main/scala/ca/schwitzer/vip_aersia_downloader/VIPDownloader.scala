@@ -14,4 +14,7 @@ trait VIPDownloader {
 class VIPDownloaderImpl @Inject()(implicit config: Config,
                                   system: ActorSystem,
                                   materializer: ActorMaterializer) extends VIPDownloader {
+  override def downloadAll(savePath: Path): Unit = {
+
+  }
 }
