@@ -9,7 +9,8 @@ class GuiceModule extends AbstractModule {
   import GuiceModule._
 
   override def configure(): Unit = {
-    bind(classOf[VIPDownloader]).to(classOf[VIPDownloaderImpl])
+    bind(classOf[ProgressBarService]).to(classOf[ProgressBarServiceImpl])
+    bind(classOf[VIPDownloaderService]).to(classOf[VIPDownloaderServiceImpl])
 
     bind(classOf[ActorSystem]).toProvider(classOf[ActorSystemProvider])
     bind(classOf[ActorMaterializer]).toProvider(classOf[ActorMaterializerProvider])

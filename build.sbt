@@ -1,10 +1,11 @@
 name := "vip_aersia_downloader"
 
-version := "0.0.1-SNAPSHOP"
+version := "0.0.3-SNAPSHOT"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   //scala
+  "jline" % "jline" % "2.14.2",
   "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
 
   //akka
@@ -12,5 +13,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.4.12",
 
   //google
-  "com.google.inject" % "guice" % "4.1.0"
+  "com.google.inject" % "guice" % "4.1.0",
+
+  //time
+  "com.github.nscala-time" %% "nscala-time" % "2.14.0"
 )
