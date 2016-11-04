@@ -16,14 +16,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.xml.{Elem, XML}
 
-trait VIPDownloader {
+trait VIPDownloaderService {
   def downloadAll(savePath: Path): Future[Done]
 }
 
-class VIPDownloaderImpl @Inject()(implicit config: Config,
-                                  system: ActorSystem,
-                                  materializer: ActorMaterializer,
-                                  progressBar: ProgressBar) extends VIPDownloader {
+class VIPDownloaderServiceImpl @Inject()(implicit config: Config,
+                                         system: ActorSystem,
+                                         materializer: ActorMaterializer,
+                                         progressBar: ProgressBar) extends VIPDownloaderService {
   val httpFlow = Http().outgoingConnection(host = config.getString("vip.http-addr"))
 
   def xmlSource: Source[Elem, NotUsed] = Source.single(HttpRequest(uri = s"/${config.getString("vip.xml-file")}"))

@@ -26,7 +26,7 @@ object Runner extends App {
   }
 
   val injector = Guice.createInjector(new GuiceModule)
-  val vipDownloader = injector.getInstance(classOf[VIPDownloader])
+  val vipDownloader = injector.getInstance(classOf[VIPDownloaderService])
 
   //TODO: write small dir detector/creator
 

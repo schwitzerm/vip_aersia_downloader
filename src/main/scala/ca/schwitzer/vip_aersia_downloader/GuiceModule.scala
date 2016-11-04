@@ -9,12 +9,12 @@ class GuiceModule extends AbstractModule {
   import GuiceModule._
 
   override def configure(): Unit = {
-    bind(classOf[VIPDownloader]).to(classOf[VIPDownloaderImpl])
+    bind(classOf[ProgressBarService]).to(classOf[ProgressBarServiceImpl])
+    bind(classOf[VIPDownloaderService]).to(classOf[VIPDownloaderServiceImpl])
 
     bind(classOf[ActorSystem]).toProvider(classOf[ActorSystemProvider])
     bind(classOf[ActorMaterializer]).toProvider(classOf[ActorMaterializerProvider])
     bind(classOf[Config]).toProvider(classOf[ConfigProvider])
-    bind(classOf[ProgressBar]).toProvider(classOf[ProgressBarProvider])
   }
 }
 
@@ -35,11 +35,5 @@ object GuiceModule {
     val config = ConfigFactory.load()
 
     override def get(): Config = config
-  }
-
-  class ProgressBarProvider extends Provider[ProgressBar] {
-    val progressBar = new ProgressBar()
-
-    override def get(): ProgressBar = progressBar
   }
 }
