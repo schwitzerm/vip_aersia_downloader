@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "2.11.8"
+ThisBuild / scalaVersion := "2.13.15"
 
 name := "vip_aersia_downloader"
 version := "0.0.3-SNAPSHOT"
@@ -7,9 +7,10 @@ libraryDependencies ++= Seq(
   "jline" % "jline" % "2.14.6",
   "org.scala-lang.modules" %% "scala-xml" % "1.3.1",
 
-  //akka
-  "com.typesafe.akka" %% "akka-http-experimental" % "2.4.11.2",
-  "com.typesafe.akka" %% "akka-stream" % "2.5.32",
+  //cats
+  "org.typelevel" %% "cats-core" % "2.12.0",
+  "org.typelevel" %% "cats-kernel" % "2.12.0",
+  "org.typelevel" %% "cats-effect" % "3.5.5",
 
   //google
   "com.google.inject" % "guice" % "7.0.0",
