@@ -5,7 +5,7 @@ version := "0.0.3-SNAPSHOT"
 libraryDependencies ++= Seq(
   //scala
   "jline" % "jline" % "2.14.6",
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.1",
+  "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
 
   //cats
   "org.typelevel" %% "cats-core" % "2.12.0",
